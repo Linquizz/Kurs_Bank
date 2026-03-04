@@ -1,0 +1,90 @@
+﻿<Page x:Class="Kurs_Bank.Views.Pages.TransactionsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Background="{StaticResource DarkBgBrush}">
+
+    <Grid Margin="30">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Транзакции"
+                   Foreground="{StaticResource TextLightBrush}"
+                   FontSize="22" FontWeight="Bold" Margin="0,0,0,20"/>
+
+        <!-- ФОРМА ПЕРЕВОДА -->
+        <Border Grid.Row="1" Background="{StaticResource CardBgBrush}"
+                CornerRadius="12" Padding="20" Margin="0,0,0,20">
+            <StackPanel>
+                <TextBlock Text="Новый перевод" Foreground="{StaticResource AccentBrush}"
+                           FontSize="14" FontWeight="SemiBold" Margin="0,0,0,12"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0" Margin="0,0,12,0">
+                        <TextBlock Text="Мой счёт" Foreground="{StaticResource TextLightBrush}" FontSize="11" Margin="0,0,0,4"/>
+                        <ComboBox x:Name="FromAccountCombo"
+                                  Background="#2D1F5E" Foreground="{StaticResource TextLightBrush}"
+                                  BorderBrush="#5C3FBE"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1" Margin="0,0,12,0">
+                        <TextBlock Text="Счёт получателя" Foreground="{StaticResource TextLightBrush}" FontSize="11" Margin="0,0,0,4"/>
+                        <TextBox x:Name="ToAccountBox" Style="{StaticResource ModernTextBox}"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="2" Margin="0,0,12,0">
+                        <TextBlock Text="Сумма" Foreground="{StaticResource TextLightBrush}" FontSize="11" Margin="0,0,0,4"/>
+                        <TextBox x:Name="AmountBox" Style="{StaticResource ModernTextBox}"/>
+                    </StackPanel>
+
+                    <Button Grid.Column="3" Content="Отправить"
+                            Style="{StaticResource PrimaryButton}"
+                            Padding="16,8" VerticalAlignment="Bottom"
+                            Click="SendMoney_Click"/>
+                </Grid>
+            </StackPanel>
+        </Border>
+
+        <!-- ИСТОРИЯ -->
+        <Border Grid.Row="2" Background="{StaticResource CardBgBrush}" CornerRadius="12" Padding="20">
+            <StackPanel>
+                <TextBlock Text="История операций" Foreground="{StaticResource AccentBrush}"
+                           FontSize="14" FontWeight="SemiBold" Margin="0,0,0,12"/>
+                <DataGrid x:Name="TransactionsGrid"
+                          AutoGenerateColumns="False"
+                          Background="Transparent"
+                          Foreground="{StaticResource TextLightBrush}"
+                          BorderThickness="0"
+                          RowBackground="#2D1F5E"
+                          AlternatingRowBackground="#261850"
+                          GridLinesVisibility="None"
+                          HeadersVisibility="Column"
+                          IsReadOnly="True">
+                    <DataGrid.ColumnHeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="Background" Value="#3D2A6E"/>
+                            <Setter Property="Foreground" Value="{StaticResource AccentBrush}"/>
+                            <Setter Property="Padding" Value="10,6"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                        </Style>
+                    </DataGrid.ColumnHeaderStyle>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Дата" Binding="{Binding OperationDate, StringFormat=dd.MM.yyyy HH:mm}" Width="140"/>
+                        <DataGridTextColumn Header="Тип" Binding="{Binding Type}" Width="100"/>
+                        <DataGridTextColumn Header="Сумма" Binding="{Binding Amount, StringFormat={}{0:N2} ₽}" Width="120"/>
+                        <DataGridTextColumn Header="Статус" Binding="{Binding Status}" Width="110"/>
+                        <DataGridTextColumn Header="Комментарий" Binding="{Binding Comment}" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>

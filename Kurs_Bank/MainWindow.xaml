@@ -1,0 +1,48 @@
+﻿<Window x:Class="Kurs_Bank.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Банк" Height="620" Width="960"
+        WindowStartupLocation="CenterScreen"
+        Background="{StaticResource DarkBgBrush}">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Column="0" Background="{StaticResource CardBgBrush}">
+            <StackPanel Margin="0,30,0,0">
+
+                <TextBlock Text="💳" FontSize="32" HorizontalAlignment="Center"/>
+                <TextBlock Text="GamazBank" Foreground="{StaticResource TextLightBrush}"
+                           FontSize="18" FontWeight="Bold"
+                           HorizontalAlignment="Center" Margin="0,4,0,30"/>
+
+                <Button x:Name="BtnDashboard" Content="🏠  Главная"
+                        Click="Navigate_Click" Tag="Dashboard"
+                        Style="{StaticResource NavButton}"/>
+
+                <Button x:Name="BtnTransactions" Content="💸  Транзакции"
+                        Click="Navigate_Click" Tag="Transactions"
+                        Style="{StaticResource NavButton}"/>
+
+                <Button x:Name="BtnCredits" Content="🏦  Кредиты"
+                        Click="Navigate_Click" Tag="Credits"
+                        Style="{StaticResource NavButton}"/>
+
+                <Button x:Name="BtnCards" Content="💳  Карты"
+                        Click="Navigate_Click" Tag="Cards"
+                        Style="{StaticResource NavButton}"/>
+
+                <Button Content="🚪  Выйти"
+                        Click="Logout_Click"
+                        Style="{StaticResource NavButton}"
+                        Margin="0,200,0,0"/>
+            </StackPanel>
+        </Border>
+
+        <Frame x:Name="MainFrame" Grid.Column="1"
+               NavigationUIVisibility="Hidden"/>
+    </Grid>
+</Window>

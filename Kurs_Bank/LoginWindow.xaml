@@ -1,0 +1,48 @@
+﻿<Window x:Class="Kurs_Bank.Views.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Банк — Вход" Height="520" Width="420"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Background="{StaticResource DarkBgBrush}">
+
+    <Grid>
+        <StackPanel VerticalAlignment="Center" Margin="50,0">
+
+            <TextBlock Text="💳" FontSize="48" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+
+            <TextBlock Text="Добро пожаловать"
+                       Foreground="{StaticResource TextLightBrush}"
+                       FontSize="22" FontWeight="Bold"
+                       HorizontalAlignment="Center" Margin="0,0,0,4"/>
+
+            <TextBlock Text="Войдите в свой аккаунт"
+                       Foreground="{StaticResource AccentBrush}"
+                       FontSize="13" HorizontalAlignment="Center"
+                       Margin="0,0,0,30"/>
+
+            <TextBlock Text="Логин" Foreground="{StaticResource TextLightBrush}"
+                       FontSize="12" Margin="0,0,0,6"/>
+            <TextBox x:Name="LoginBox" Style="{StaticResource ModernTextBox}" Margin="0,0,0,16"/>
+
+            <TextBlock Text="Пароль" Foreground="{StaticResource TextLightBrush}"
+                       FontSize="12" Margin="0,0,0,6"/>
+            <PasswordBox x:Name="PasswordBox" Style="{StaticResource ModernPasswordBox}" Margin="0,0,0,24"/>
+
+            <TextBlock x:Name="ErrorText" Foreground="#FF6B6B"
+                       FontSize="12" HorizontalAlignment="Center"
+                       Margin="0,0,0,12" Visibility="Collapsed"/>
+
+            <Button Content="Войти" Style="{StaticResource PrimaryButton}"
+                    Click="LoginButton_Click"/>
+
+            <TextBlock HorizontalAlignment="Center" Margin="0,16,0,0">
+                <Run Foreground="{StaticResource AccentBrush}" Text="Нет аккаунта? "/>
+                <Run Foreground="White" Text="Зарегистрироваться"
+                     MouseLeftButtonDown="GoToRegister_Click"
+                     TextDecorations="Underline" Cursor="Hand"/>
+            </TextBlock>
+
+        </StackPanel>
+    </Grid>
+</Window>
