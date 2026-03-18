@@ -1,17 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Kurs_Bank.Data;
+using System.Data.Entity.Migrations;
 using System.Windows;
 
 namespace Kurs_Bank
 {
-    /// <summary>
-    /// Логика взаимодействия для App.xaml
-    /// </summary>
     public partial class App : Application
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+
+            var config = new Migrations.Configuration();
+            var migrator = new DbMigrator(config);
+            migrator.Update();
+        }
     }
 }

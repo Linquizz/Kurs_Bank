@@ -5,6 +5,7 @@
 
     <ScrollViewer Padding="30">
         <StackPanel>
+            
 
             <TextBlock x:Name="GreetingText"
                        Foreground="{StaticResource TextLightBrush}"
@@ -23,22 +24,31 @@
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Border Background="{StaticResource CardBgBrush}"
-                                CornerRadius="12" Padding="20" Margin="0,0,16,16"
-                                Width="200">
+            CornerRadius="12" Padding="20" Margin="0,0,16,16"
+            Width="220">
                             <StackPanel>
                                 <TextBlock Text="{Binding AccountType}"
-                                           Foreground="{StaticResource AccentBrush}"
-                                           FontSize="12"/>
+                       Foreground="{StaticResource AccentBrush}"
+                       FontSize="12"/>
                                 <TextBlock Foreground="{StaticResource TextLightBrush}"
-                                           FontSize="22" FontWeight="Bold" Margin="0,8,0,4">
-                                    <Run Text="{Binding Balance}"/>
-                                    <Run Text=" ₽"/>
+                       FontSize="22" FontWeight="Bold" Margin="0,8,0,4">
+                <Run Text="{Binding Balance, StringFormat={}{0:N2}}"/>
+                <Run Text=" ₽"/>
                                 </TextBlock>
                                 <TextBlock Text="{Binding Status}"
-                                           Foreground="#A78BFA" FontSize="11"/>
+                       Foreground="#A78BFA" FontSize="11" Margin="0,0,0,12"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Content="Закрыть счёт"
+                        Tag="{Binding AccountID}"
+                        Click="CloseAccount_Click"
+                        Padding="8,5" Margin="0,0,6,0"
+                        Background="#FF6B6B" Foreground="White"
+                        BorderThickness="0" Cursor="Hand" FontSize="11"/>
+                                </StackPanel>
                             </StackPanel>
                         </Border>
                     </DataTemplate>
+                    
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
 
@@ -46,6 +56,7 @@
                     Style="{StaticResource PrimaryButton}"
                     Width="220" HorizontalAlignment="Left"
                     Click="OpenAccount_Click" Margin="0,8,0,0"/>
+            
 
         </StackPanel>
     </ScrollViewer>

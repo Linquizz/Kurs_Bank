@@ -1,5 +1,6 @@
 ﻿using Kurs_Bank.Views.Pages;
 using System.Windows;
+using Kurs_Bank.Pages;
 
 namespace Kurs_Bank.Views
 {
@@ -17,6 +18,7 @@ namespace Kurs_Bank.Views
             switch (btn.Tag.ToString())
             {
                 case "Dashboard": MainFrame.Navigate(new DashboardPage()); break;
+                case "Profile": MainFrame.Navigate(new ProfilePage()); break;
                 case "Transactions": MainFrame.Navigate(new TransactionsPage()); break;
                 case "Credits": MainFrame.Navigate(new CreditsPage()); break;
                 case "Cards": MainFrame.Navigate(new CardsPage()); break;

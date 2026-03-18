@@ -1,0 +1,139 @@
+﻿<Page x:Class="Kurs_Bank.CreditsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Background="{StaticResource DarkBgBrush}">
+
+    <Grid Margin="30">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Кредиты"
+                   Foreground="{StaticResource TextLightBrush}"
+                   FontSize="22" FontWeight="Bold" Margin="0,0,0,20"/>
+
+        <Border Grid.Row="1" Background="{StaticResource CardBgBrush}"
+                CornerRadius="12" Padding="20" Margin="0,0,0,20">
+            <StackPanel>
+                <TextBlock Text="Оформить кредит"
+                           Foreground="{StaticResource AccentBrush}"
+                           FontSize="14" FontWeight="SemiBold" Margin="0,0,0,12"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0" Margin="0,0,12,0">
+                        <TextBlock Text="Сумма кредита" Foreground="{StaticResource TextLightBrush}" FontSize="11" Margin="0,0,0,4"/>
+                        <TextBox x:Name="CreditAmountBox" Style="{StaticResource ModernTextBox}"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Margin="0,0,12,0">
+                        <TextBlock Text="Срок (месяцев)" Foreground="{StaticResource TextLightBrush}" FontSize="11" Margin="0,0,0,4"/>
+                        <TextBox x:Name="CreditTermBox" Style="{StaticResource ModernTextBox}"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="2" Margin="0,0,12,0">
+                        <TextBlock Text="Счёт зачисления" Foreground="{StaticResource TextLightBrush}" FontSize="11" Margin="0,0,0,4"/>
+                        <ComboBox x:Name="CreditAccountCombo"
+          Style="{StaticResource ModernComboBox}"
+          ItemTemplate="{StaticResource AccountComboTemplate}"/>
+                    </StackPanel>
+                    <Button Grid.Column="3" Content="Оформить"
+                            Style="{StaticResource PrimaryButton}"
+                            Padding="16,8" VerticalAlignment="Bottom"
+                            Click="ApplyCredit_Click"/>
+                </Grid>
+            </StackPanel>
+        </Border>
+
+        <ScrollViewer Grid.Row="2">
+            <ItemsControl x:Name="CreditsList">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border Background="{StaticResource CardBgBrush}"
+                                CornerRadius="12" Padding="20" Margin="0,0,0,16">
+                            <StackPanel>
+                                <Grid Margin="0,0,0,12">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel Grid.Column="0">
+                                        <TextBlock Text="Сумма" Foreground="{StaticResource AccentBrush}" FontSize="11"/>
+                                        <TextBlock Foreground="{StaticResource TextLightBrush}" FontSize="18" FontWeight="Bold">
+                                            <Run Text="{Binding Amount, StringFormat={}{0:N2}}"/><Run Text=" ₽"/>
+                                        </TextBlock>
+                                    </StackPanel>
+                                    <StackPanel Grid.Column="1">
+                                        <TextBlock Text="Ставка" Foreground="{StaticResource AccentBrush}" FontSize="11"/>
+                                        <TextBlock Foreground="{StaticResource TextLightBrush}" FontSize="18" FontWeight="Bold">
+                                            <Run Text="{Binding InterestRate}"/><Run Text="%"/>
+                                        </TextBlock>
+                                    </StackPanel>
+                                    <StackPanel Grid.Column="2">
+                                        <TextBlock Text="Ежемесячный платёж" Foreground="{StaticResource AccentBrush}" FontSize="11"/>
+                                        <TextBlock Foreground="{StaticResource TextLightBrush}" FontSize="18" FontWeight="Bold">
+                                            <Run Text="{Binding MonthlyPayment, StringFormat={}{0:N2}}"/><Run Text=" ₽"/>
+                                        </TextBlock>
+                                    </StackPanel>
+                                    <StackPanel Grid.Column="3">
+                                        <TextBlock Text="Статус" Foreground="{StaticResource AccentBrush}" FontSize="11"/>
+                                        <TextBlock Text="{Binding Status}"
+                                                   Foreground="{StaticResource TextLightBrush}" FontSize="16"/>
+                                    </StackPanel>
+                                </Grid>
+
+                                <TextBlock Text="График платежей"
+                                           Foreground="{StaticResource AccentBrush}"
+                                           FontSize="12" Margin="0,0,0,8"/>
+
+                                <DataGrid ItemsSource="{Binding CreditPayments}"
+                                          AutoGenerateColumns="False"
+                                          Background="Transparent"
+                                          Foreground="{StaticResource TextLightBrush}"
+                                          BorderThickness="0"
+                                          RowBackground="#2D1F5E"
+                                          AlternatingRowBackground="#261850"
+                                          GridLinesVisibility="None"
+                                          IsReadOnly="False"
+                                          MaxHeight="200">
+                                    <DataGrid.ColumnHeaderStyle>
+                                        <Style TargetType="DataGridColumnHeader">
+                                            <Setter Property="Background" Value="#3D2A6E"/>
+                                            <Setter Property="Foreground" Value="{StaticResource AccentBrush}"/>
+                                            <Setter Property="Padding" Value="10,6"/>
+                                            <Setter Property="BorderThickness" Value="0"/>
+                                        </Style>
+                                    </DataGrid.ColumnHeaderStyle>
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Плановая дата" Binding="{Binding PlannedDate, StringFormat=dd.MM.yyyy}" Width="120" IsReadOnly="True"/>
+                                        <DataGridTextColumn Header="Сумма" Binding="{Binding Amount, StringFormat={}{0:N2} ₽}" Width="100" IsReadOnly="True"/>
+                                        <DataGridTextColumn Header="Статус" Binding="{Binding Status}" Width="100" IsReadOnly="True"/>
+                                        <DataGridTextColumn Header="Дата оплаты" Binding="{Binding ActualDate, StringFormat=dd.MM.yyyy}" Width="120" IsReadOnly="True"/>
+                                        <DataGridTemplateColumn Header="Действие" Width="*">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Button Content="Оплатить"
+                                                            Style="{StaticResource PrimaryButton}"
+                                                            Padding="10,4"
+                                                            Tag="{Binding PaymentID}"
+                                                            Click="PayInstallment_Click"
+                                                            IsEnabled="{Binding IsPending}"/>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </Grid>
+</Page>

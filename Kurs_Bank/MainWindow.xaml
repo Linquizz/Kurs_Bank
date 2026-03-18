@@ -23,6 +23,10 @@
                         Click="Navigate_Click" Tag="Dashboard"
                         Style="{StaticResource NavButton}"/>
 
+                <Button x:Name="BtnProfile" Content="👤  Профиль"
+                        Click="Navigate_Click" Tag="Profile"
+                        Style="{StaticResource NavButton}"/>
+
                 <Button x:Name="BtnTransactions" Content="💸  Транзакции"
                         Click="Navigate_Click" Tag="Transactions"
                         Style="{StaticResource NavButton}"/>

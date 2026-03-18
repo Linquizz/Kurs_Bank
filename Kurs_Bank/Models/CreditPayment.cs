@@ -7,6 +7,7 @@ namespace Kurs_Bank.Models
     public class CreditPayment
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int PaymentID { get; set; }
 
         [Required]
@@ -24,7 +25,9 @@ namespace Kurs_Bank.Models
         [StringLength(20)]
         public string Status { get; set; }
 
-        [ForeignKey("CreditID")]
         public virtual Credit Credit { get; set; }
+
+        [NotMapped]
+        public bool IsPending => Status == "Ожидает";
     }
 }

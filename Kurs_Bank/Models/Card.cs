@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
 
 namespace Kurs_Bank.Models
 {
@@ -27,7 +28,26 @@ namespace Kurs_Bank.Models
         [StringLength(20)]
         public string Status { get; set; }
 
-        [ForeignKey("AccountID")]
         public virtual Account Account { get; set; }
+
+        [NotMapped]
+        public string FormattedCardNumber
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(CardNumber) || CardNumber.Length != 16)
+                    return CardNumber;
+                return CardNumber.Substring(0, 4) + " " +
+                       CardNumber.Substring(4, 4) + " " +
+                       CardNumber.Substring(8, 4) + " " +
+                       CardNumber.Substring(12, 4);
+            }
+            private set { }
+        }
+        [NotMapped]
+        public bool IsActive => Status == "Активна";
+
+        [NotMapped]
+        public bool IsBlocked => Status == "Заблокирована";
     }
 }

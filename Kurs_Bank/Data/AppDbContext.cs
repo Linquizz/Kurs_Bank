@@ -8,6 +8,7 @@ namespace Kurs_Bank.Data
     {
         public AppDbContext() : base("name=BankDB")
         {
+            this.Configuration.ProxyCreationEnabled = false;
         }
 
         public DbSet<Client> Clients { get; set; }

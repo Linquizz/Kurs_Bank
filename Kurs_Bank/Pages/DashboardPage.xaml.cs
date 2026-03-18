@@ -54,5 +54,32 @@ namespace Kurs_Bank.Views.Pages
                 }
             }
         }
+
+        private void CloseAccount_Click(object sender, RoutedEventArgs e)
+        {
+            var btn = sender as Button;
+            int accountId = (int)btn.Tag;
+
+            var result = MessageBox.Show(
+                "Вы уверены что хотите закрыть счёт?", "Закрытие счёта",
+                MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                using (var db = new AppDbContext())
+                {
+                    var account = db.Accounts.Find(accountId);
+                    if (account.Balance > 0)
+                    {
+                        MessageBox.Show("Нельзя закрыть счёт с ненулевым балансом", "Ошибка");
+                        return;
+                    }
+                    account.Status = "Закрыт";
+                    account.CloseDate = DateTime.Now;
+                    db.SaveChanges();
+                    LoadData();
+                }
+            }
+        }
     }
 }
