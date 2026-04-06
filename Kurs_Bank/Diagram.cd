@@ -1,56 +1,56 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="Kurs_Bank.Models.Account" Collapsed="true">
-    <Position X="5.5" Y="1.75" Width="1.5" />
+  <Class Name="Kurs_Bank.Models.Account">
+    <Position X="4" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>gAAgAIAEAAAAAAAAAggAQAAIEAAAAAAAABAAAAAAAIQ=</HashCode>
       <FileName>Models\Account.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Kurs_Bank.Models.Card">
-    <Position X="5.5" Y="0.5" Width="1.5" />
+    <Position X="0.5" Y="2.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>IAAEAAAEAAAggAAAEgAAAAAAAAgAAgAAAAAAAAAAAEA=</HashCode>
       <FileName>Models\Card.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Kurs_Bank.Models.Client">
-    <Position X="3" Y="0.5" Width="1.5" />
+    <Position X="7.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>gAAAAGAAAAAAAAAIAAAQAAQAAAAAAACAAAIAIAAAAIg=</HashCode>
       <FileName>Models\Client.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Kurs_Bank.Models.Credit">
-    <Position X="7.75" Y="0.5" Width="1.5" />
+    <Position X="5.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAEAAAEAQAAAgAAAACgAAEAAAgAAAAAAEAAAMQ=</HashCode>
       <FileName>Models\Credit.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Kurs_Bank.Models.CreditPayment">
-    <Position X="10.25" Y="0.75" Width="1.5" />
+    <Position X="2.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAEAAAEAAAAAAABAEAAAACAAAAAABgAAACAAAAAAAA=</HashCode>
       <FileName>Models\CreditPayment.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Kurs_Bank.Models.Transaction">
-    <Position X="3.25" Y="4.5" Width="1.5" />
+    <Position X="2.25" Y="3" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAgAAAEAAAAAAAAAAAAAACgAAAAAAQAAQAAAAAAAAA=</HashCode>
       <FileName>Models\Transaction.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Kurs_Bank.Models.Transaction_Account">
-    <Position X="5.5" Y="4.25" Width="1.5" />
+    <Position X="4" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AACAAAAAAAAAAAAAEgAAAAAgAAAAAAAAAAAAAAIAAEA=</HashCode>
       <FileName>Models\Transaction_Account.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Kurs_Bank.Models.Users">
-    <Position X="0.75" Y="1" Width="1.5" />
+    <Position X="0.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAQAAAAAIQ=</HashCode>
       <FileName>Models\Users.cs</FileName>

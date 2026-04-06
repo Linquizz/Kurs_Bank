@@ -11,9 +11,32 @@
                        Foreground="{StaticResource TextLightBrush}"
                        FontSize="22" FontWeight="Bold" Margin="0,0,0,6"/>
 
-            <TextBlock Text="Ваши счета"
-                       Foreground="{StaticResource AccentBrush}"
-                       FontSize="14" Margin="0,0,0,16"/>
+            <Grid Margin="0,0,0,16">
+                <TextBlock Text="Ваши счета"
+               Foreground="{StaticResource AccentBrush}"
+               FontSize="14" VerticalAlignment="Center"/>
+                <Button Content="📥  Экспорт в Excel"
+            HorizontalAlignment="Right"
+            Click="ExportAccounts_Click"
+            Padding="12,6"
+            Background="#1F6B3A" Foreground="White"
+            BorderThickness="0" Cursor="Hand">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}"
+                        CornerRadius="6" Padding="{TemplateBinding Padding}">
+                                <ContentPresenter HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#2D9E57"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
 
             <ItemsControl x:Name="AccountsList">
                 <ItemsControl.ItemsPanel>
